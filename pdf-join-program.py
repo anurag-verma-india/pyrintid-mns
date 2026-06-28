@@ -27,6 +27,12 @@ Millimeters to Pixels Formula:
 pixels = millimeters * ( PPI / 25.4 )
 """
 
+# Ensure all required folders exist before doing anything else.
+# os.makedirs(..., exist_ok=True) creates the folder if missing,
+# and does nothing (no error) if it already exists.
+for folder in ("pdf-files", "png-files", "cropped-pngs", "joined-file"):
+    os.makedirs(folder, exist_ok=True)
+
 for filename in os.listdir("cropped-pngs"):
     os.remove(os.path.join("cropped-pngs", filename))
 
